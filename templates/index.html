@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>랜덤 배경 색상</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="info">
+            <strong>AI소프트웨어학부 정보보안전공</strong><br>
+            20213211 임선아
+        </div>
+        <div class="github">
+            <a href="https://github.com/4ana-l22m" target="_blank">GitHub</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>오늘의 배경색</h1>
+        <div id="colorCode">#ffffff</div>
+        <button onclick="changeColor()">색상 변경</button>
+        <button onclick="saveColor()">저장하기</button>
+        <button onclick="copyColor()">복사하기</button>
+
+        <h3>저장된 색상:</h3>
+        <ul id="savedColors"></ul>
+
+        <!-- 기분 선택 -->
+        <div style="margin-top: 20px;">
+            <label>오늘 기분은?</label>
+            <button onclick="selectMood('😄')">😄</button>
+            <button onclick="selectMood('😐')">😐</button>
+            <button onclick="selectMood('😡')">😡</button>
+        </div>
+
+        <!-- 기분 응답 메시지 -->
+        <div id="moodResult" style="margin-top: 10px; font-size: 1.2rem;"></div>
+
+        <!-- 체류 시간 -->
+        <div id="stayTime" style="margin-top: 15px; font-size: 0.9rem; color: gray;"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
