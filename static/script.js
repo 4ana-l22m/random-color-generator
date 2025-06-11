@@ -10,13 +10,15 @@ function changeColor() {
 
 function saveColor() {
     const color = document.getElementById("colorCode").innerText;
-    let saved = JSON.parse(localStorage.getItem("savedColors") || "[]");
-    if (!saved.includes(color)) {
-        saved.push(color);
-        localStorage.setItem("savedColors", JSON.stringify(saved));
-        renderSavedColors();
-    }
+    fetch('/save-color', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ color: color })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
 }
+
 
 function renderSavedColors() {
     const saved = JSON.parse(localStorage.getItem("savedColors") || "[]");
