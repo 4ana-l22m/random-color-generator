@@ -3,4 +3,14 @@ services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "8080:5000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: sqlite
+    container_name: sqlite-db
+    volumes:
+      - ./instance:/data
